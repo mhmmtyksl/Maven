@@ -10,13 +10,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+// mvn.sporitory.com dan WebDriverManager  ve selenium java dosyalarini indirdik
+// bunu her projede yapmak lazim
+
 public class C01_Maven {
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
-        driver.manage().window().maximize();
+        driver.manage().window().maximize(); // sayfayi acinca hemen sayfayi buyuttuk cunku bazi yazilar veya lionkler kucuk ekranda gozukmeyebilir
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
+        // bu komut yazilinca her komutta yazilan saniyeye kadar bekleme yapabilir bu internet yavasligi problemlerini cozer
+        // eger sayfa erken acilirsa otomatikmen gecer beklemeden eger yazilan sure icinde de acilmazsa
+        // exception firlatir.
 
         //1- https://www.amazon.com/ sayfasina gidelim
         driver.get("https://www.amazon.com/");
@@ -29,8 +34,9 @@ public class C01_Maven {
 
         //4- Bulunan sonuc sayisini yazdiralim
         // WebElement sonucYazisiElementi= driver.findElement(By.className("a-section a-spacing-small a-spacing-top-small"));
+        // bu sekilde aratinca iki sonuc oldugu icin hata verdi kod calismadi.bu yuzden x.path e gore asagidaki gibi yaptik
         // By.className ile locate ettigimiz webelementi ile class attribute nin degerinde
-        // bosluk varsa locator sagliklil calismayabilir.
+        // bosluk varsa locator saglikli calismayabilir.
         WebElement sonucYazisiElementi=driver.findElement(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));
         System.out.println(sonucYazisiElementi.getText());
 
@@ -40,10 +46,12 @@ public class C01_Maven {
         //ilkUrunElementi.click();
         // sadece bir click yapacaksak webelemnt olusturmaya ve assign etmeye gerek yok
         // direk locate edip sonra click yapabiliriz
+        // asagidaki usttekinin kisaltilmis hali
         driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base a-text-normal'])[1]")).click();
 
         //6- Sayfadaki tum basliklari yazdiralim
-        driver.navigate().back();
+        driver.navigate().back(); // tum urunleri gormek icin mecburen bir onceki sayfaya donduk
+
         List<WebElement> urunlerListesi= driver.findElements(By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']"));
         for (WebElement each:urunlerListesi
         ) {

@@ -31,6 +31,7 @@ public class C03_Test02 {
         //5. Sign in buttonuna tiklayin
         driver.findElement(By.xpath("//input[@name='submit']")).click();
         driver.get("http://zero.webappsecurity.com"); // bunu yapmamizin amaci guvenlik adimini atlamak
+        // guvenlik var robotlar icin ama sayfayi tekrar acinca guvenlik asiliyor ve sayfaya hesap acilmis sekilde giriyor
 
         //6. Pay Bills sayfasina gidin
         // oncesinde online Banking e tiklkamamiz lazim
