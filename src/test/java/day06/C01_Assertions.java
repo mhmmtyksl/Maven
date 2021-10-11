@@ -15,7 +15,7 @@ public class C01_Assertions {
 
     static WebDriver  driver;
 
-    @BeforeClass
+    @BeforeClass // setup methodunun sadece bvir defa calismasi bizim icin yeterli oldugundan @BeforeClass kullandik
     public static void setup(){
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
@@ -26,9 +26,11 @@ public class C01_Assertions {
     //      ○ Sayfa URL’inin https://www.bestbuy.com/ ‘a esit oldugunu test edin
     @Test
     public void urlTest(){
-        String expectedURL="https://www.bestbuy.com/";
+        String expectedURL="https://www.bestbuy.com/"; // bunlari hic tanimlamadan da yazabiliriz ama kodun anlasilir olmasi icin bu sekilde yazmak mantikli
         String actualURL= driver.getCurrentUrl();
         Assert.assertEquals("Istenen URL bulanamadi",expectedURL,actualURL);
+        // burada basa yazilan mesaj testin calismadigi yani FAILED oldugu durumda gozukur
+        // test basarili ise gozukmez
     }
     //      ○ titleTest => Sayfa başlığının “Rest” içermediğini(contains) test edin
     @Test

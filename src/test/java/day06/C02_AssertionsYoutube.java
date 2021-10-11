@@ -22,6 +22,9 @@ public class C02_AssertionsYoutube {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("https://www.youtube.com/");
         driver.findElement(By.xpath("//*[text()='Ich stimme zu']")).click();
+        // sayfada guvenlik sorusu ciktigi icin once onu tiklamamiz lazim o yuzden bunu yazdik ve klick yaptik
+        // yerini text ile locate ettik text ile locate etmek icin
+        // //*[text()='...'] yazariz eger tagname onemsiz ise * kullanilir.
     }
 
     //3) Aşağıdaki adları kullanarak 3 test metodu oluşturun ve gerekli testleri yapin
@@ -31,6 +34,9 @@ public class C02_AssertionsYoutube {
         String expectedTitle="YouTube";
         String actualTitle= driver.getTitle();
         Assert.assertEquals("Sayfa title'i beklenenden farkli",expectedTitle,actualTitle);
+        // bunlarin hepsinde testin FAILED olmasi durumunda yazdigimiz mesaj gorunecek
+        // girilen degerlerin expected ve actual in yerleri onemli aksi takdirde FAILED durumunda hatayi bulamayiz
+        // hangi siraya hangisini yazacagimiz methodda belli oluyor
     }
 
     //  ○ imageTest   => YouTube resminin görüntülendiğini (isDisplayed()) test edin
@@ -45,6 +51,7 @@ public class C02_AssertionsYoutube {
     public void aramaKutusuTesti(){
         WebElement aramaKutusu=driver.findElement(By.id("search-input"));
         Assert.assertTrue("Arama kutusuna ulasilamiyor", aramaKutusu.isEnabled());
+        // isEnabled() erisilebilir olup olmadigini anlamak icin kullanilir.
     }
 
     //  ○ wrongTitleTest  => Sayfa basliginin “youtube” olmadigini dogrulayin
@@ -55,6 +62,7 @@ public class C02_AssertionsYoutube {
         Assert.assertNotEquals("Title istenmeyen kelimeye esit",istenmeyenBaslik,actualTitle);
         //Assert.assertFalse("false mesaji",istenmeyenBaslik.equals(actualTitle));
         //Assert.assertTrue("True Mesaji",!istenmeyenBaslik.equals(actualTitle));
+        // yazilan 3 ifadenin de sonucu aynidir. hangisini kullandigimiz onemli degildir.
     }
 
     @AfterClass

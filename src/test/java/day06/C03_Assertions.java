@@ -29,12 +29,12 @@ public class C03_Assertions {
     @Test
     public void gecersizMailTesti() throws InterruptedException {
         driver.findElement(By.partialLinkText("Sign in")).click();
-        Thread.sleep(3000);
+        Thread.sleep(3000); // test calismadi o yuzden beklemesi icin bunu yazdik
         WebElement emailGiriskutusu=driver.findElement(By.id("email_create"));
-        emailGiriskutusu.sendKeys("MerhabaTelevole" + Keys.ENTER);
-        Thread.sleep(3000);
+        emailGiriskutusu.sendKeys("MerhabaTelevole" + Keys.ENTER); // @ olmayan bir yazi yazdirdik
+        Thread.sleep(3000); // burada her nedense implicitlyWait calismadi o yuzden bunu yazdik ama bu onemli degil onemli olan kodun kontrolu
         WebElement hatayazisielementi=driver.findElement(By.id("create_account_error"));
-        Assert.assertTrue("Mesaj gorunmedi",hatayazisielementi.isDisplayed());
+        Assert.assertTrue("Mesaj gorunmedi",hatayazisielementi.isDisplayed()); // hata yazisinin gorunur olup olmadigini kontrol etmek icin bunu yazdik
     }
     @AfterClass
     public static void tearDown(){
