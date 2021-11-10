@@ -17,7 +17,7 @@ public class C02_Test01 {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //1-Test01 isimli bir class olusturun
-// bu sayfada robotlara musade edilmedigi icin kod hata verdi devam edip calismadi
+        // bu sayfada robotlara musade edilmedigi icin kod hata verdi devam edip calismadi
 
         //2- https://www.walmart.com/ adresine gidin
         driver.get("https://www.walmart.com/");
@@ -49,13 +49,13 @@ public class C02_Test01 {
         }
 
         //7- URL in walmart.com icerdigini control edin
-        String actuelUrl=driver.getCurrentUrl();
+        String actualUrl=driver.getCurrentUrl();
         String urlArananKelime="walmart.com";
 
-        if (actuelUrl.contains(urlArananKelime)) {
-            System.out.println("actuelUrl " + urlArananKelime+ " kelimesini iceriyor, Test PASS");
+        if (actualUrl.contains(urlArananKelime)) {
+            System.out.println("actualUrl " + urlArananKelime+ " kelimesini iceriyor, Test PASS");
         } else {
-            System.out.println("actuelUrl " + urlArananKelime+ " kelimesini icermiyor, Test FAILED");
+            System.out.println("actualUrl " + urlArananKelime+ " kelimesini icermiyor, Test FAILED");
         }
 
         //8-”Nutella” icin arama yapiniz
@@ -65,6 +65,7 @@ public class C02_Test01 {
         //9- Kac sonuc bulundugunu yaziniz
         WebElement sonucYazisiElementi=driver.findElement(By.xpath("//div[@class='inline-flex mv3-xl mt3 ml3 ml4-xl mr1 db']"));
         System.out.println(sonucYazisiElementi.getText());
+
         //10-Sayfayi kapatin
         driver.close();
     }
