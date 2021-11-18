@@ -14,7 +14,7 @@ public class C02_AssertionsYoutube {
     //1) Bir class oluşturun: YoutubeAssertions
     //2) https://www.youtube.com adresine gidin
     static WebDriver driver;
-    @BeforeClass
+    @BeforeClass // static olmak zorundarir
     public static void setup(){
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
